@@ -50,7 +50,8 @@ namespace War3Macro
 			var ret = new INPUT();
 			ret.type = INPUT_TYPE.KEYBOARD;
 			ret.ki = new KEYBOARD_INPUT();
-			ret.ki.wVk = (uint)VK.LSHIFT;
+			ret.ki.wVk = (ushort)VK.LSHIFT;
+			ret.ki.dwFlags = 0;
 			return ret;
 		}
 		private static INPUT LShiftUpInput()
@@ -58,8 +59,8 @@ namespace War3Macro
 			var ret = new INPUT();
 			ret.type = INPUT_TYPE.KEYBOARD;
 			ret.ki = new KEYBOARD_INPUT();
-			ret.ki.wVk = (uint)VK.LSHIFT;
-			ret.ki.dwFlags = KEYEVENTF.KEYUP;
+			ret.ki.wVk = (ushort)VK.LSHIFT;
+			ret.ki.dwFlags = 2;
 			return ret;
 		}
 		private static INPUT CharDownInput(char chr)
@@ -69,6 +70,7 @@ namespace War3Macro
 			ret.type = INPUT_TYPE.KEYBOARD;
 			ret.ki = new KEYBOARD_INPUT();
 			ret.ki.wVk = vk;
+			ret.ki.dwFlags = 0;
 			return ret;
 		}
 		private static INPUT CharUpInput(char chr)
@@ -78,7 +80,7 @@ namespace War3Macro
 			ret.type = INPUT_TYPE.KEYBOARD;
 			ret.ki = new KEYBOARD_INPUT();
 			ret.ki.wVk = vk;
-			ret.ki.dwFlags = KEYEVENTF.KEYUP;
+			ret.ki.dwFlags = 2;
 			return ret;
 		}
 		private static INPUT EnterDownInput()
@@ -86,7 +88,8 @@ namespace War3Macro
 			var ret = new INPUT();
 			ret.type = INPUT_TYPE.KEYBOARD;
 			ret.ki = new KEYBOARD_INPUT();
-			ret.ki.wVk = (uint)VK.RETURN;
+			ret.ki.wVk = (ushort)VK.RETURN;
+			ret.ki.dwFlags = 0;
 			return ret;
 		}
 		private static INPUT EnterUpInput()
@@ -94,8 +97,8 @@ namespace War3Macro
 			var ret = new INPUT();
 			ret.type = INPUT_TYPE.KEYBOARD;
 			ret.ki = new KEYBOARD_INPUT();
-			ret.ki.wVk = (uint)VK.RETURN;
-			ret.ki.dwFlags = KEYEVENTF.KEYUP;
+			ret.ki.wVk = (ushort)VK.RETURN;
+			ret.ki.dwFlags = 2;
 			return ret;
 		}
 
@@ -109,9 +112,9 @@ namespace War3Macro
 		[StructLayout(LayoutKind.Sequential)]
 		private struct KEYBOARD_INPUT
 		{
-			public uint wVk;
+			public ushort wVk;
 			public ushort wScan;
-			public KEYEVENTF dwFlags;
+			public uint dwFlags;
 			public uint time;
 			public IntPtr dwExtraInfo;
 		}
