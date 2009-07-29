@@ -22,6 +22,10 @@ namespace War3Macro
     public partial class MainWindow : Window
     {
 		private KeyboardHook hotkeyregistration;
+		private System.Windows.Forms.NotifyIcon TippuTrayNotify;
+		private System.Windows.Forms.ContextMenuStrip ctxTrayMenu;
+		private System.Windows.Forms.ToolStripMenuItem mnuExit;
+
         public MainWindow()
         {
             InitializeComponent();
