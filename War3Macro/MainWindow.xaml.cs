@@ -51,14 +51,49 @@ namespace War3Macro
 
 		private void KeyPressHandler(object sender, HookEventArgs e)
 		{
-			if (   e.Key == System.Windows.Forms.Keys.F5
-				|| e.Key == System.Windows.Forms.Keys.F6 
-				|| e.Key == System.Windows.Forms.Keys.F7
-				|| e.Key == System.Windows.Forms.Keys.F8
-				)//&& ManagedWinapi.Windows.SystemWindow.ForegroundWindow.Title == "Warcraft III"
+			if (ManagedWinapi.Windows.SystemWindow.ForegroundWindow.Title != "Warcraft III")
+				return;
+			var tab = GetTabFromFKey(e.Key);
+			if (tab == null)
+				return;
+			var lines = GetLinesFromTab(tab);
+			foreach (string line in lines)
 			{
-				SendInputWrapper.SendString(F5Line1.Text, false);
+				if(!string.IsNullOrEmpty(line))
+				{
+					SendInputWrapper.SendString(line, e.Shift);
+				}
 			}
+		}
+
+		private TabItem GetTabFromFKey(System.Windows.Forms.Keys key)
+		{
+			switch (key)
+			{
+				case System.Windows.Forms.Keys.F5:
+					return F5Tab;
+					break;
+				case System.Windows.Forms.Keys.F6:
+					return F6Tab;
+					break;
+				case System.Windows.Forms.Keys.F7:
+					return F7Tab;
+					break;
+				case System.Windows.Forms.Keys.F8:
+					return F8Tab;
+					break;
+				default: return null; break;
+			}
+		}
+
+		private string[] GetLinesFromTab(TabItem tab)
+		{
+			var ret = new List<string>();
+			foreach (TextBox textbox in ((StackPanel)tab.Content).Children)
+			{
+				ret.Add(textbox.Text);
+			}
+			return ret.ToArray();
 		}
     }
 }

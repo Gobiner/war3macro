@@ -8,16 +8,17 @@ namespace War3Macro
 {
 	public static class SendInputWrapper
 	{
+
 		public static void SendString(string inp, bool toAll)
 		{
 			IEnumerable<INPUT> inputs = new INPUT[0];
 			if (toAll)
-				inputs = inputs.Concat(new INPUT[1] { LShiftDownInput() });
-			inputs = inputs.Concat(new INPUT[2] { EnterDownInput(), EnterUpInput() });
+				inputs = inputs.Concat(new INPUT[2] { LShiftUpInput(), LShiftDownInput() });
+			inputs = inputs.Concat(new INPUT[3] { EnterDownInput(), EnterUpInput(), EnterUpInput() });
 			if (toAll)
 				inputs = inputs.Concat(new INPUT[1] { LShiftUpInput() });
 			inputs = inputs.Concat(BuildInputsForString(inp));
-			inputs = inputs.Concat(new INPUT[2] { EnterDownInput(), EnterUpInput() });
+			inputs = inputs.Concat(new INPUT[3] { EnterDownInput(), EnterUpInput(), EnterUpInput() });
 			var finalinputs = inputs.ToArray();
 			var sent = SendInput((uint)finalinputs.Length, finalinputs, Marshal.SizeOf(finalinputs[0]));
 			var error = Marshal.GetLastWin32Error();
