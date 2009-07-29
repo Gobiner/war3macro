@@ -19,7 +19,12 @@ namespace War3Macro
 			inputs = inputs.Concat(BuildInputsForString(inp));
 			inputs = inputs.Concat(new INPUT[2] { EnterDownInput(), EnterUpInput() });
 			var finalinputs = inputs.ToArray();
-			SendInput((uint)finalinputs.Length, finalinputs, Marshal.SizeOf(finalinputs[0]));
+			var sent = SendInput((uint)finalinputs.Length, finalinputs, Marshal.SizeOf(finalinputs[0]));
+			var error = Marshal.GetLastWin32Error();
+			if (sent != finalinputs.Length)
+			{
+				var noop = "";
+			}
 		}
 
 		private static IEnumerable<INPUT> BuildInputsForString(string inp)
@@ -176,20 +181,20 @@ namespace War3Macro
 			MODECHANGE = 0x1F,
 
 			SPACE = 0x20,
-			PRIOR = 0x21,
-			NEXT = 0x22,
-			END = 0x23,
-			HOME = 0x24,
-			LEFT = 0x25,
-			UP = 0x26,
-			RIGHT = 0x27,
-			DOWN = 0x28,
-			SELECT = 0x29,
-			PRINT = 0x2A,
-			EXECUTE = 0x2B,
-			SNAPSHOT = 0x2C,
-			INSERT = 0x2D,
-			DELETE = 0x2E,
+			PRIOR = 0x21, // extended
+			NEXT = 0x22, // extended
+			END = 0x23, // extended
+			HOME = 0x24, // extended
+			LEFT = 0x25, // extended
+			UP = 0x26, // extended
+			RIGHT = 0x27, // extended
+			DOWN = 0x28, // extended
+			SELECT = 0x29, // extended
+			PRINT = 0x2A, // extended
+			EXECUTE = 0x2B, // extended
+			SNAPSHOT = 0x2C, // extended
+			INSERT = 0x2D, // extended
+			DELETE = 0x2E, // extended
 			HELP = 0x2F,
 
 			ZERO = 0x30,
@@ -232,9 +237,9 @@ namespace War3Macro
 			Y = 0x59,
 			Z = 0x5A,
 
-			LWIN = 0x5B,
-			RWIN = 0x5C,
-			APPS = 0x5D,
+			LWIN = 0x5B, // extended
+			RWIN = 0x5C, // extended
+			APPS = 0x5D, // extended
 
 			//
 			// 0x5E : reserved
@@ -353,33 +358,4 @@ namespace War3Macro
 			//
 		}
 	}
-
-	static class NativeMethods
-    {
-        public const int INPUT_KEYBOARD = 1;
-        public const uint KEY_UP = 0x0002;
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct KEYBDINPUT
-        {
-            public ushort wVk;
-            public ushort wScan;
-            public uint dwFlags;
-            public uint time;
-            public IntPtr dwExtraInfo;
-        };
-
-        [StructLayout(LayoutKind.Explicit, Size = 28)]
-        public struct INPUT
-        {
-            [FieldOffset(0)]
-            public uint type;
-            [FieldOffset(4)]
-            public KEYBDINPUT ki;
-        };
-
-        [DllImport("user32.dll")]
-        public static extern uint SendInput(uint nInputs, ref INPUT pInputs, int cbSize);
-
-    }
 }
