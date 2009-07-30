@@ -14,14 +14,15 @@ namespace War3Macro
 			IEnumerable<INPUT> inputs = new INPUT[0];
 			if (toAll)
 				inputs = inputs.Concat(new INPUT[2] { LShiftUpInput(), LShiftDownInput() });
-			inputs = inputs.Concat(new INPUT[3] { EnterDownInput(), EnterUpInput(), EnterUpInput() });
+			inputs = inputs.Concat(new INPUT[2] { EnterDownInput(), EnterUpInput() });
 			if (toAll)
 				inputs = inputs.Concat(new INPUT[1] { LShiftUpInput() });
 			inputs = inputs.Concat(BuildInputsForString(inp));
-			inputs = inputs.Concat(new INPUT[3] { EnterDownInput(), EnterUpInput(), EnterUpInput() });
+			inputs = inputs.Concat(new INPUT[2] { EnterDownInput(), EnterUpInput() });
 			var finalinputs = inputs.ToArray();
 			var sent = SendInput((uint)finalinputs.Length, finalinputs, Marshal.SizeOf(finalinputs[0]));
-			var error = Marshal.GetLastWin32Error();
+			var error = "0x" + ((uint)Marshal.GetLastWin32Error() | (uint)0x80000000).ToString("X");
+
 			if (sent != finalinputs.Length)
 			{
 				var noop = "";
@@ -127,7 +128,7 @@ namespace War3Macro
 			[FieldOffset(4)]
 			public KEYBOARD_INPUT ki;
 		}
-		private enum INPUT_TYPE : int
+		private enum INPUT_TYPE : uint
 		{
 			MOUSE = 0,
 			KEYBOARD = 1,
