@@ -22,10 +22,20 @@ namespace War3Macro
     public partial class MainWindow : Window
     {
 		private KeyboardHook hotkeyregistration;
+        System.Windows.Forms.NotifyIcon notificationIcon = new System.Windows.Forms.NotifyIcon();
 
         public MainWindow()
         {
             InitializeComponent();
+            this.Icon = BitmapFrame.Create(new Uri("phoenician_g.ico", UriKind.Relative));
+
+            notificationIcon.Icon = new System.Drawing.Icon("phoenician_g.ico");
+            notificationIcon.Visible = true;
+            notificationIcon.DoubleClick += delegate(object sender, EventArgs e)
+            {
+                this.Show();
+                this.WindowState = WindowState.Normal;
+            };
 
             foreach (var something in tabControl1.Items)
             {
@@ -38,11 +48,20 @@ namespace War3Macro
 			hotkeyregistration = new KeyboardHook();
 			hotkeyregistration.KeyDown += KeyPressHandler;
             this.Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+            this.StateChanged += delegate(object sender, EventArgs e)
+            {
+                if (this.WindowState == WindowState.Minimized)
+                {
+                    this.Hide();
+                }
+            };
+
         }
 
 		void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			Properties.Settings.Default.Save();
+            notificationIcon.Visible = false;
 		}
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
