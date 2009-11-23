@@ -3,3 +3,4 @@ relre:^War3Macro/bin
 glob:.hgignore
 relre:\.user$
 relre:\.suo$
+glob:Setup/Debug/*
