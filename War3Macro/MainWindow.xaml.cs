@@ -27,6 +27,7 @@ namespace War3Macro
         public MainWindow()
         {
             InitializeComponent();
+			//FindResource("phoenician_g");
             this.Icon = BitmapFrame.Create(new Uri("phoenician_g.ico", UriKind.Relative));
 
             notificationIcon.Icon = new System.Drawing.Icon("phoenician_g.ico");
@@ -37,13 +38,11 @@ namespace War3Macro
                 this.WindowState = WindowState.Normal;
             };
 
-            foreach (var something in tabControl1.Items)
-            {
-				foreach (TextBox textbox in ((StackPanel)((TabItem)something).Content).Children)
-				{
-					textbox.Text = (string) Properties.Settings.Default[textbox.Name];
-				}
-            }
+			foreach (TabItem tabItem in tabControl1.Items)
+			{
+				var textbox = (TextBox)tabItem.Content;
+				textbox.Text = Properties.Settings.Default[textbox.Name].ToString();
+			}
 
 			hotkeyregistration = new KeyboardHook();
 			hotkeyregistration.KeyDown += KeyPressHandler;
@@ -104,12 +103,7 @@ namespace War3Macro
 
 		private string[] GetLinesFromTab(TabItem tab)
 		{
-			var ret = new List<string>();
-			foreach (TextBox textbox in ((StackPanel)tab.Content).Children)
-			{
-				ret.Add(textbox.Text);
-			}
-			return ret.ToArray();
+			return ((TextBox)tab.Content).Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 		}
     }
 }

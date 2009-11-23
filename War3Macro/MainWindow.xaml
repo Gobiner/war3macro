@@ -3,59 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="Warcraft III Macros" mc:Ignorable="d" Height="Auto" Width="Auto" FontSize="18" ResizeMode="CanMinimize" Name="MainWindow2" SizeToContent="WidthAndHeight" Topmost="True">
+        Title="Warcraft III Macros" mc:Ignorable="d" Height="Auto" Width="Auto" FontSize="18" ResizeMode="CanResize" Name="MainWindow2" SizeToContent="WidthAndHeight" Topmost="True">
     <TabControl Height="Auto" HorizontalAlignment="Left" Margin="0,0,0,0" Name="tabControl1" VerticalAlignment="Top" Width="800">
         <TabItem Header="F5" Name="F5Tab" Width="199">
-            <StackPanel>
-                <TextBox Name="F5Line1" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line2" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line3" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line4" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line5" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line6" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line7" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line8" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F5Line9" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-            </StackPanel>
+                <TextBox Name="F5TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" />
         </TabItem>
         <TabItem Header="F6" Name="F6Tab" Width="199">
-            <StackPanel>
-                <TextBox Name="F6Line1" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line2" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line3" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line4" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line5" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line6" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line7" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line8" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F6Line9" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-            </StackPanel>
+                <TextBox Name="F6TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" />
         </TabItem>
         <TabItem Header="F7" Name="F7Tab" Width="199">
-            <StackPanel>
-                <TextBox Name="F7Line1" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line2" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line3" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line4" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line5" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line6" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line7" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line8" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F7Line9" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-            </StackPanel>
+                <TextBox Name="F7TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" />
         </TabItem>
         <TabItem Header="F8" Name="F8Tab" Width="199">
-            <StackPanel>
-                <TextBox Name="F8Line1" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line2" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line3" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line4" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line5" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line6" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line7" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line8" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-                <TextBox Name="F8Line9" AcceptsReturn="False" AcceptsTab="False" IsUndoEnabled="True" TextAlignment="Left" Height="30" TextChanged="TextBox_TextChanged" />
-            </StackPanel>
+                <TextBox Name="F8TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" />
         </TabItem>
     </TabControl>
 </Window>
