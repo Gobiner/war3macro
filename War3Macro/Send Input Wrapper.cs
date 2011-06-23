@@ -26,10 +26,6 @@ namespace War3Macro
 
             //var exception = Marshal.GetExceptionForHR((int)((uint)Marshal.GetLastWin32Error() | (uint)0x80000000));
             var exception = Marshal.GetExceptionForHR(Marshal.GetLastWin32Error());
-            if (sent != finalinputs.Length)
-            {
-                var noop = "";
-            }
         }
 
         private static IEnumerable<INPUT> BuildInputsForString(string inp)

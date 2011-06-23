@@ -28,10 +28,9 @@ namespace War3Macro
         public MainWindow()
         {
             InitializeComponent();
-			//FindResource("phoenician_g");
-            this.Icon = BitmapFrame.Create(new Uri("phoenician_g.ico", UriKind.Relative));
+            this.Icon = BitmapFrame.Create(new Uri("pack://application:,,,/phoenician_g.ico", UriKind.RelativeOrAbsolute));
 
-            notificationIcon.Icon = new System.Drawing.Icon("phoenician_g.ico");
+            notificationIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("pack://application:,,,/phoenician_g.ico")).Stream);
             notificationIcon.Visible = true;
 			notificationIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
 			notificationIcon.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -92,12 +91,12 @@ namespace War3Macro
 
 		private void KeyPressHandler(object sender, HookEventArgs e)
 		{
-            if (ManagedWinapi.Windows.SystemWindow.ForegroundWindow.Title != "Warcraft III")
-                return;
 			var tab = GetTabFromFKey(e.Key);
 			if (tab == null)
 				return;
-			var lines = GetLinesFromTab(tab);
+            if (GetActiveWindowTitleWrapper.GetActiveWindowTitle() != "Warcraft III")
+                return; 
+            var lines = GetLinesFromTab(tab);
 			foreach (string line in lines)
 			{
 				if(!string.IsNullOrEmpty(line))
@@ -107,7 +106,7 @@ namespace War3Macro
                 if (TabIsSlow(tab))
                 {
                     var x = lines.Count();
-                    var delay = Math.Max(1000  * x * (x * x - 9) / (x * x + 1) / x, 0);
+                    var delay = Math.Max((int)(1000 * (Math.Pow(x, 1.4) - 4.65) / (Math.Pow(x, 1.4) + 1)), 0);
                     Thread.Sleep(delay);
                 }
 			}
