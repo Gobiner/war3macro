@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
 using System.Windows.Interop;
+using System.Threading;
 
 namespace War3Macro
 {
@@ -32,6 +33,19 @@ namespace War3Macro
 
             notificationIcon.Icon = new System.Drawing.Icon("phoenician_g.ico");
             notificationIcon.Visible = true;
+			notificationIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
+			notificationIcon.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+				new System.Windows.Forms.ToolStripMenuItem("Restore", null, delegate(object sender, EventArgs e)
+				{
+					this.Show();
+               		this.WindowState = WindowState.Normal;
+				}),
+				new System.Windows.Forms.ToolStripMenuItem("Exit", null, delegate(object sender, EventArgs e)
+				{
+					this.Close();
+				}),
+			});
+					
             notificationIcon.DoubleClick += delegate(object sender, EventArgs e)
             {
                 this.Show();
@@ -40,8 +54,10 @@ namespace War3Macro
 
 			foreach (TabItem tabItem in tabControl1.Items)
 			{
-				var textbox = (TextBox)tabItem.Content;
+				var textbox = (TextBox)((StackPanel)tabItem.Content).Children[0];
 				textbox.Text = Properties.Settings.Default[textbox.Name].ToString();
+                var checkbox = (CheckBox)((StackPanel)tabItem.Content).Children[1];
+                checkbox.IsChecked = (bool)Properties.Settings.Default[checkbox.Name];
 			}
 
 			hotkeyregistration = new KeyboardHook();
@@ -54,7 +70,13 @@ namespace War3Macro
                     this.Hide();
                 }
             };
+        }
 
+         
+
+        void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default[((CheckBox)e.Source).Name] = ((CheckBox)e.Source).IsChecked.Value;
         }
 
 		void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -82,6 +104,12 @@ namespace War3Macro
 				{
                     SendInputWrapper.SendString(line, e.Shift);
 				}
+                if (TabIsSlow(tab))
+                {
+                    var x = lines.Count();
+                    var delay = Math.Max(1000  * x * (x * x - 9) / (x * x + 1) / x, 0);
+                    Thread.Sleep(delay);
+                }
 			}
 		}
 
@@ -103,7 +131,12 @@ namespace War3Macro
 
 		private string[] GetLinesFromTab(TabItem tab)
 		{
-			return ((TextBox)tab.Content).Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+			return ((TextBox)((StackPanel)tab.Content).Children[0]).Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 		}
+
+        private bool TabIsSlow(TabItem tab)
+        {
+            return ((CheckBox)((StackPanel)tab.Content).Children[1]).IsChecked.Value;
+        }
     }
 }
