@@ -28,9 +28,9 @@ namespace War3Macro
         public MainWindow()
         {
             InitializeComponent();
-            this.Icon = BitmapFrame.Create(new Uri("pack://application:,,,/phoenician_g.ico", UriKind.RelativeOrAbsolute));
+            this.Icon = BitmapFrame.Create(new Uri("pack://application:,,,./Resources/phoenician_g.ico", UriKind.RelativeOrAbsolute));
 
-            notificationIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("pack://application:,,,/phoenician_g.ico")).Stream);
+            notificationIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("pack://application:,,,./Resources/phoenician_g.ico")).Stream);
             notificationIcon.Visible = true;
 			notificationIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
 			notificationIcon.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -54,6 +54,7 @@ namespace War3Macro
 			foreach (TabItem tabItem in tabControl1.Items)
 			{
 				var textbox = (TextBox)((StackPanel)tabItem.Content).Children[0];
+                textbox.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Resources/#Friz Quadrata TT");
 				textbox.Text = Properties.Settings.Default[textbox.Name].ToString();
                 var checkbox = (CheckBox)((StackPanel)tabItem.Content).Children[1];
                 checkbox.IsChecked = (bool)Properties.Settings.Default[checkbox.Name];
