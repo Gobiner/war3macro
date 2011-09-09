@@ -5,25 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="Warcraft III Macros" mc:Ignorable="d" Height="Auto" Width="Auto" FontSize="18" ResizeMode="CanResize" Name="MainWindow2" SizeToContent="WidthAndHeight" Topmost="False">
     <TabControl Height="Auto" HorizontalAlignment="Left" Margin="0,0,0,0" Name="tabControl1" VerticalAlignment="Top" Width="800">
-        <TabItem Header="F5" Name="F5Tab" Width="199">
+        <TabItem Header="F4" Name="F4Tab" Width="159">
+            <StackPanel>
+                <TextBox Name="F4TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" FontSize="14" />
+                <CheckBox Name="F4CheckBox" Content="Slowly send text to avoid spam checks" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="F5" Name="F5Tab" Width="159">
             <StackPanel>
                 <TextBox Name="F5TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" FontSize="14" />
                 <CheckBox Name="F5CheckBox" Content="Slowly send text to avoid spam checks" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
             </StackPanel>
         </TabItem>
-        <TabItem Header="F6" Name="F6Tab" Width="199">
+        <TabItem Header="F6" Name="F6Tab" Width="159">
             <StackPanel>
                 <TextBox Name="F6TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" FontSize="14" />
                 <CheckBox Name="F6CheckBox" Content="Slowly send text to avoid spam checks" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
             </StackPanel>
         </TabItem>
-        <TabItem Header="F7" Name="F7Tab" Width="199">
+        <TabItem Header="F7" Name="F7Tab" Width="159">
             <StackPanel>
                 <TextBox Name="F7TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" FontSize="14" />
                 <CheckBox Name="F7CheckBox" Content="Slowly send text to avoid spam checks" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
             </StackPanel>
         </TabItem>
-        <TabItem Header="F8" Name="F8Tab" Width="199">
+        <TabItem Header="F8" Name="F8Tab" Width="159">
             <StackPanel>
                 <TextBox Name="F8TextBox" AcceptsReturn="True" AcceptsTab="False" TextAlignment="Left" TextChanged="TextBox_TextChanged" FontSize="14" />
                 <CheckBox Name="F8CheckBox" Content="Slowly send text to avoid spam checks" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>

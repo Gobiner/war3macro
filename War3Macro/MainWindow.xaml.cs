@@ -117,6 +117,8 @@ namespace War3Macro
 		{
 			switch (key)
 			{
+                case System.Windows.Forms.Keys.F4:
+                    return F4Tab;
 				case System.Windows.Forms.Keys.F5:
 					return F5Tab;
 				case System.Windows.Forms.Keys.F6:
